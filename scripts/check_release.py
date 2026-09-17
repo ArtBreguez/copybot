@@ -33,9 +33,9 @@ PUBLIC_BUILD_DIGESTS = {
     '11d5960a326750d5838078e36cf38b85af677262',
     'a26af69be951a213d495a4c3e4e4022e16d87065',
     '551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb',
-    '39f0f0ad529793e6422a047a102cb1fe44692124',
-    'c2868060efc86be5fabe9499cc1b9665e89f547e',
-    'e6e4f986ad968a562e6f4d27640eb2ec9668af32',
+    'a1d282b36b6f3519aa1f3fc636f609c47dddb294',
+    '2031cfc080254a8a887f58cffee85186f0e49e48',
+    'e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e',
 }
 BUILD_DIRS = {'.git', 'target', '__pycache__', '.pytest_cache', '.venv', 'node_modules'}
 FORBIDDEN_DIRS = {'data', 'run', 'control', 'archive', 'logs', 'ui-mockups'}

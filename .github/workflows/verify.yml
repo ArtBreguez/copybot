@@ -54,7 +54,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Gitleaks scan
-        uses: gitleaks/gitleaks-action@39f0f0ad529793e6422a047a102cb1fe44692124
+        uses: gitleaks/gitleaks-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294
 
   sast:
     name: SAST (CodeQL)
@@ -76,7 +76,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@c2868060efc86be5fabe9499cc1b9665e89f547e
+        uses: github/codeql-action/init@2031cfc080254a8a887f58cffee85186f0e49e48
         with:
           languages: ${{ matrix.language }}
       - name: Setup Python
@@ -88,7 +88,7 @@ jobs:
         if: matrix.language == 'rust'
         run: cargo build --locked --manifest-path hot/Cargo.toml
       - name: Perform CodeQL analysis
-        uses: github/codeql-action/analyze@c2868060efc86be5fabe9499cc1b9665e89f547e
+        uses: github/codeql-action/analyze@2031cfc080254a8a887f58cffee85186f0e49e48
 
   sca:
     name: SCA (Dependency Review)
@@ -100,6 +100,6 @@ jobs:
       pull-requests: read
     steps:
       - name: Dependency review
-        uses: actions/dependency-review-action@e6e4f986ad968a562e6f4d27640eb2ec9668af32
+        uses: actions/dependency-review-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e
         with:
           fail-on-severity: high
