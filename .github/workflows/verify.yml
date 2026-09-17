@@ -2,6 +2,11 @@ name: Verify source package
 on:
   push:
   pull_request:
+  workflow_run:
+    workflows:
+      - Copilot cloud agent
+    types:
+      - completed
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,6 +20,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: "3.11"
@@ -37,6 +43,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
       - name: Gitleaks scan
         uses: gitleaks/gitleaks-action@39f0f0ad529793e6422a047a102cb1fe44692124
 
@@ -58,6 +65,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
       - name: Initialize CodeQL
         uses: github/codeql-action/init@c2868060efc86be5fabe9499cc1b9665e89f547e
         with:
